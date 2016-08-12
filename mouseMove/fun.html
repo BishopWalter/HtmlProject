@@ -8,6 +8,7 @@
 			#boundary {
 				height: 210px;
 				background: black;
+				margin-top: 20px;
 			}
 			
 			#boundary_2 {
@@ -20,6 +21,7 @@
 				width: 10px;
 				height: 10px;
 				background: white;
+				position: absolute;
 			}
 			
 			#_block_2 {
@@ -27,6 +29,7 @@
 				height: 10px;
 				background: yellow;
 				margin-top: 20px;
+				position: absolute;
 			}
 			
 			#_block_3 {
@@ -34,6 +37,7 @@
 				height: 10px;
 				background: yellow;
 				margin-top: 20px;
+				position: absolute;
 			}
 		</style>
 	</head>
@@ -43,10 +47,10 @@
 			<div id="_block"></div>
 			<div id="_block_2"></div>
 		</div>
-<!--		
+		
 		<div id="boundary_2">
 			<div id="_block_3"></div>
-		</div>-->
+		</div>
 		<div id="btn">
 			<input type="button" id="start" value="Start" onclick="start()" />
 			<input type="button" id="stop" value="Stop" onclick="stop()" />
@@ -88,11 +92,11 @@
 				if(directionToRight) {
 					x += 2;
 					var sita = Math.PI * 0.005 * x;
-					y = Math.sin(sita) * 100 + 100;
+					y = Math.sin(sita) * 100 + 110;
 				} else {
 					x -= 2;
 					var sita = Math.PI * 0.005 * x;
-					y = Math.sin(sita) * 100 + 100;
+					y = Math.sin(sita) * 100 + 110;
 				}
 
 				changeDirection();
@@ -126,11 +130,11 @@
 			//运动
 			function moving() {
 				sin_coordinate();
-				_block.style.marginTop = y + "px";
-				_block.style.marginLeft = x + "px";
+				_block.style.top = y + "px";
+				_block.style.left = x + "px";
 
-//				_block_2.style.marginTop =y + "px";
-//				_block_2.style.marginLeft = x + "px";
+				_block_3.style.top =y + "px";
+				_block_3.style.left = x + "px";
 			}
 
 			//开始运动

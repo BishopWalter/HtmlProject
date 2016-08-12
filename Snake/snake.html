@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			body {
+				margin: 0px;
+			}
+			
+			#boundary {
+				width: 600px;
+				height: 600px;
+				border: 1px solid black;
+				padding: 0px;
+			}
+			
+			#block {
+				width: 10px;
+				height: 10px;
+				background: black;
+				position: absolute;
+				margin: 0px;
+			}
+			
+			#run_state {
+				width: 80px;
+				height: 60px;
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="boundary">
+			<div id="block"> </div>
+		</div>
+		<!--<input type="button" id="start" value="Start" onclick="start()" />
+		<input type="button" id="stop" value="Stop" onclick="stop()" />-->
+		<div id="run_state"></div>
+		<script type="text/javascript">
+			var boundary = document.getElementById("boundary");
+			var block = document.getElementById("block");
+			var run_state = document.getElementById("run_state");
+			var x = 0;
+			var y = 0;
+			var level = 1;//游戏等级
+			var timer_id = 0;
+			var drct = "RIGHT";//移动方向
+			var space_down = false;//空格键标记
+
+			//通过键盘操作控制方向、暂停、开始
+			document.onkeypress = function(ev) {
+				//键值： A--97
+				//		D--100
+				//		W--119
+				//		S--115
+				//		空格--32
+				switch(ev.keyCode) {
+					case 97:
+						drct = "LEFT";
+						break;
+					case 100:
+						drct = "RIGHT";
+						break;
+					case 119:
+						drct = "UP";
+						break;
+					case 115:
+						drct = "DOWN";
+						break;
+					case 32:
+						if(!space_down) {
+							stop();
+							space_down = true;
+							run_state.innerHTML += "<br/>暂停中..."
+						} else {
+							start();
+							space_down = false;
+						}
+						break;
+				}
+			}
+
+			function get_position() {
+				switch(drct) {
+					case "LEFT":
+						x -= level;
+						break;
+					case "RIGHT":
+						x += level;
+						break;
+					case "UP":
+						y -= level;
+						break;
+					case "DOWN":
+						y += level;
+						break;
+					default:
+						break;
+				}
+			}
+
+			function moving() {
+				run_state.innerHTML = "x:" + x + "<br/>y:" + y;
+				get_position();
+				block.style.left = x + "px";
+				block.style.top = y + "px";
+			}
+
+			//开始与暂停
+			function start() {
+				if(timer_id != null) {
+					window.clearInterval(timer_id);
+				}
+				timer_id = window.setInterval(moving, 10);
+			}
+
+			function stop() {
+				if(timer_id != null) {
+					window.clearInterval(timer_id);
+				}
+			}
+		</script>
+
+	</body>
+
+</html>
