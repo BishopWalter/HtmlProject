@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8" />
+		<script src="js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			body {
+				font-family: "times new roman";
+				color: red;
+			}
+			
+			li {
+				width: 79px;
+				height: 30px;
+				list-style: none;
+				float: left;
+				margin: auto auto;
+				line-height: 30px;
+				text-align: center;
+			}
+			
+			i {
+				font-style: normal;
+				/*display: block;*/
+				float: left;
+			}
+			
+			.spacer {
+				width: 1px;
+				height: 15px;
+				margin: 7px 0px;
+				padding: 0px;
+				background: black;
+			}
+			
+			.test {
+				width: 400px;
+				height: 600px;
+				border: 1px black solid;
+				margin: 100px;
+				background: lightcyan;
+				float: left;
+			}
+			
+			.test2 {
+				width: 400px;
+				height: 600px;
+				border: 1px black solid;
+				margin: 80px;
+				background: lightcyan;
+				float: left;
+			}
+			
+			.test3 {
+				width: 400px;
+				height: 600px;
+				border: 1px black solid;
+				margin: 80px;
+				background: lightcyan;
+				float: left;
+			}
+			
+			.title {
+				background: grey;
+				color: yellow;
+				font-weight: 500px;
+			}
+			/*.body {
+				width: 400px;
+				height: 600px;
+				border: 1px black solid;
+				margin: 80px;
+				background: green;
+				color: yellow;
+				font-weight: 500px;
+			}*/
+			
+			.tw_title {
+				background: green;
+				color: yellow;
+				font-weight: 500px;
+			}
+			
+			.tw_body {
+				width: 400px;
+				height: 600px;
+				border: 1px black solid;
+				margin: 80px;
+				background: green;
+				color: yellow;
+				font-weight: 500px;
+			}
+			
+			.dl_title {
+				background: blue;
+				color: yellow;
+				font-weight: 500px;
+			}
+			
+			.dl_body {
+				width: 400px;
+				height: 600px;
+				border: 1px black solid;
+				margin: 80px;
+				background: blue;
+				color: yellow;
+				font-weight: 500px;
+			}
+			
+			.it_title {
+				background: red;
+				color: yellow;
+				font-weight: 500px;
+			}
+			
+			.it_body {
+				width: 400px;
+				height: 600px;
+				border: 1px black solid;
+				margin: 80px;
+				background: red;
+				color: yellow;
+				font-weight: 500px;
+			}
+			
+			.kj_title {
+				background: lightcoral;
+				color: yellow;
+				font-weight: 500px;
+			}
+			
+			.kj_body {
+				width: 400px;
+				height: 600px;
+				border: 1px black solid;
+				margin: 80px;
+				background: lightcoral;
+				color: yellow;
+				font-weight: 500px;
+			}
+			
+			.ys_title {
+				background: black;
+				color: white;
+				font-weight: 500px;
+			}
+			
+			.ys_body {
+				width: 400px;
+				height: 600px;
+				border: 1px black solid;
+				margin: 80px;
+				background: black;
+				color: yellow;
+				font-weight: 500px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			//		declaration a string variable tips_string;
+			var tips_string = "This is an test alert!"
+				//		declaration a function for button listener
+			function test_alert(a) {
+				//				using a system function to show an alert dialog
+				alert(a)
+			}
+
+			function show_triangle_up(row) {
+				var i;
+				var j;
+				var k;
+				for(i = 1; i <= row; i++) {
+					for(j = 1; j <= row - i; j++) {
+						document.write("&nbsp;");
+					}
+					for(k = 1; k <= 2 * i - 1; k++) {
+
+						document.write("* ");
+					}
+					document.write("<br />");
+				}
+			}
+
+			function show_triangle_down(row) {
+
+				for(var i = 0; i < row; i++) {
+					var count = 0;
+					for(var k = 1; k <= i; k++) {
+						document.write("&nbsp;")
+						count++;
+					}
+					for(var j = 1; j <= row - count; j++) {
+						document.write("*&nbsp;&nbsp;");
+					}
+					document.write("<br/>")
+				}
+			}
+
+			function show_square(row) {
+				for(var i = 1; i < row; i++) {
+					for(var j = 1; j < row; j++) {
+						//						document.write("* ");
+						document.getElementById("show").innerHTML = "* ";
+
+					}
+					//					document.write("<br />");
+					document.getElementById("show").innerHTML = "<br/>";
+				}
+			}
+			
+//			数组
+//			一维数组:
+			var fruit = new Array();
+			fruit[0] = "apple";
+			fruit[1] = "peach";
+			fruit[2] = "orange";
+			fruit[3] = "bananar";
+			for (var i = 0; i < fruit.length; i++) {
+				document.write(fruit[i]+" ");
+			}
+			
+			var name = new Array();
+			name[0] = new Array();
+			name[0] = ("张三","李四","王二","麻子");
+			name[1] = new Array();
+			name[1] = ("Jerry","Tom","Alin","Peter");
+			
+			for (var i = 0; i < name.length; i++) {
+				for (var j = 0; j < name.length; j++) {
+					document.write(name[i][j]);
+				}
+			}
+			
+		</script>
+		<button type="button" onclick="test_alert(tips_string)">弹出对话框</button>
+		<button type="button" onclick="show_triangle_up(7)">打印正三角形</button>
+		<button type="button" onclick="show_triangle_down(7)">打印倒三角形</button>
+		<button type="button" onclick="show_square(7)">打印正方形</button>
+		<button type="button" id="disappear">敢不敢点一下？</button>
+		<!--点击切换-->
+		<div class="test">
+			<div style="width: 100%;height: 30px;background: lightblue">
+				<ul style="float: left;padding: 0px;margin: 0px;">
+					<li class="tw">天文</li>
+					<li class="dl">地理</li>
+					<li class="it">IT</li>
+					<li class="kj">科技</li>
+					<li class="ys">影视</li>
+				</ul>
+			</div>
+			<div>
+				<p id="tv" style="margin: 10px;">此处为测试显示</p>
+			</div>
+		</div>
+		<!--鼠标滑动切换-->
+		<div class="test2">
+			<div style="width: 100%;height: 30px;background: lightblue">
+				<ul style="float: left;padding: 0px;margin: 0px;">
+					<li class="tw2">天文</li>
+					<i class="spacer"></i>
+					<li class="dl2">地理</li>
+					<i class="spacer"></i>
+					<li class="it2">IT</li>
+					<i class="spacer"></i>
+					<li class="kj2">科技</li>
+					<i class="spacer"></i>
+					<li class="ys2">影视</li>
+				</ul>
+			</div>
+		</div>
+		<!--鼠标滑动切换 siblings-->
+		<div class="test3">
+			<div style="width: 100%;height: 30px;background: lightblue">
+				<ul style="float: left;padding: 0px;margin: 0px;">
+					<li class="title">天文</li>
+					<i class="spacer"></i>
+					<li>地理</li>
+					<i class="spacer"></i>
+					<li>IT</li>
+					<i class="spacer"></i>
+					<li>科技</li>
+					<i class="spacer"></i>
+					<li>影视</li>
+				</ul>
+			</div>
+			<div class="div_main" style="width: 100%;height: 570px;background: lightgreen;">
+				<!--第一个list-->
+				<div style="width: 100%;height: 570px;background: red;">
+
+				</div>
+				<div style="width: 100%;height: 570px;background: red;display: none;">
+
+				</div>
+				<!--第二个list-->
+				<div style="width: 100%;height: 570px;background: orange;display: none;">
+
+				</div>
+				<div style="width: 100%;height: 570px;background: orange;display: none;">
+
+				</div>
+				<!--第三个list-->
+				<div style="width: 100%;height: 570px;background: yellow;display: none;">
+
+				</div>
+				<div style="width: 100%;height: 570px;background: yellow;display: none;">
+
+				</div>
+				<!--第四个list-->
+				<div style="width: 100%;height: 570px;background: green;display: none;">
+
+				</div>
+				<div style="width: 100%;height: 570px;background: green;display: none;">
+
+				</div>
+				<!--第五个list-->
+				<div style="width: 100%;height: 570px;background: blue;display: none;">
+
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			//		点击事件
+			$(function() {
+				$("#disappear").click(function() {
+					$(".test").hide();
+				});
+				$("#disappear").dblclick(function() {
+					$(".test").show();
+				});
+				$(".tw").click(function() {
+					$(".test").addClass("tw_body");
+					$(".tw").addClass("tw_title");
+				});
+
+				$(".dl").click(function() {
+					$(".test").addClass("dl_body");
+					$(".dl").addClass("dl_title");
+				});
+				$(".it").click(function() {
+					$(".test").addClass("it_body");
+					$(".it").addClass("it_title");
+				});
+				$(".kj").click(function() {
+					$(".test").addClass("kj_body");
+					$(".kj").addClass("kj_title");
+				});
+				$(".ys").click(function() {
+					$(".test").addClass("ys_body");
+					$(".ys").addClass("ys_title");
+				});
+			});
+
+			//			鼠标移动事件
+			$(function() {
+				$(".tw2").mouseenter(function() {
+					$(".test2").addClass("tw_body");
+					$(".tw2").addClass("tw_title");
+				});
+				$(".tw2").mouseleave(function() {
+					$(".test2").removeClass("tw_body");
+					$(".tw2").removeClass("tw_title");
+				});
+				$(".dl2").mouseenter(function() {
+					$(".test2").addClass("dl_body");
+					$(".dl2").addClass("dl_title");
+				});
+				$(".dl2").mouseleave(function() {
+					$(".test2").removeClass("dl_body");
+					$(".dl2").removeClass("dl_title");
+				});
+				$(".it2").mouseenter(function() {
+					$(".test2").addClass("it_body");
+					$(".it2").addClass("it_title");
+				});
+				$(".it2").mouseleave(function() {
+					$(".test2").removeClass("it_body");
+					$(".it2").removeClass("it_title");
+				});
+				$(".kj2").mouseenter(function() {
+					$(".test2").addClass("kj_body");
+					$(".kj2").addClass("kj_title");
+				});
+				$(".kj2").mouseleave(function() {
+					$(".test2").removeClass("kj_body");
+					$(".kj2").removeClass("kj_title");
+				});
+				$(".ys2").mouseenter(function() {
+					$(".test2").addClass("ys_body");
+					$(".ys2").addClass("ys_title");
+				});
+				$(".ys2").mouseleave(function() {
+					$(".test2").removeClass("ys_body");
+					$(".ys2").removeClass("ys_title");
+				});
+
+			});
+			//			鼠标悬浮切换siblings
+			$(function() {
+				$("li").mouseenter(function() {
+					$(this).addClass("title").siblings().removeClass("title");
+					var index = $(this).index();
+					$(".div_main div").eq(index).show().siblings().hide();
+				});
+			});
+		</script>
+		
+		<script type="text/javascript">
+			
+		</script>
+
+	</body>
+
+</html>

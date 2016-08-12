@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>腾讯首页</title>
+		<style type="text/css">
+			* {
+				padding: 0px;
+				margin: 0px;
+			}
+			
+			i {
+				font-style: normal;
+			}
+			
+			a {
+				text-decoration: none;
+			}
+			
+			.soso {
+				width: 1000px;
+				height: 90px;
+				/*border: 1px black solid;*/
+				margin: 0px auto;
+			}
+			
+			.logo {
+				width: 120px;
+				height: 61px;
+				background: url(img/qqlogo_aoyun_filter.png)no-repeat;
+				margin-left: 152px;
+				margin-top: 16px;
+				margin-bottom: 15px;
+				float: left;
+			}
+			
+			.search {
+				width: 382px;
+				height: 37px;
+				float: left;
+				margin-left: 45px;
+				margin-top: 16px;
+			}
+			
+			#searchbox {
+				border: 1px #3297D8 solid;
+				width: 290px;
+				height: 35px;
+			}
+			
+			.select_sort {
+				width: 56px;
+				height: 35px;
+				line-height: 35px;
+				text-align: center;
+				color: #666;
+				font-weight: 500;
+				padding-left: 4px;
+				margin: 0px;
+				border: none;
+			}
+			
+			.up_narrow {
+				position: relative;
+				top: 5px;
+			}
+			
+			.search_input {
+				width: 200px;
+				height: 35px;
+			}
+			
+			.search_button {
+				width: 90px;
+				height: 37px;
+				background: #5DA4E6;
+				color: white;
+				line-height: 35px;
+				text-align: center;
+				font-size: 15px;
+				font-weight: 400px;
+			}
+			
+			.sogoulogo {
+				width: 25px;
+				height: 25px;
+				margin-top: 5px;
+			}
+			
+			.select_sort,
+			.search_input,
+			.search_button,
+			.sogoulogo {
+				float: left;
+			}
+			
+			.navigation {
+				width: 980px;
+				height: 63px;
+				margin: 0px auto;
+				background: #3297D8;
+				padding-left: 20px;
+				clear: left;
+			}
+			
+			.navigation div {
+				width: 13%;
+				height: 100%;
+				margin: auto 6px;
+				line-height: 28px;
+				padding: 0px;
+			}
+			
+			#navigation_last {
+				width: 10%;
+				height: 63px;
+			}
+			
+			.navigation div,
+			#navigation_last {
+				float: left;
+			}
+			
+			.navigation_line {
+				display: block;
+			}
+			
+			.navigation_line a {
+				font-size: 14px;
+				font-family: "微软雅黑";
+				font-weight: 500;
+				color: white;
+				margin: auto 8px;
+			}
+			
+			.navigation_a_selected{
+				background: whitesmoke;
+				color: #666666;
+			}
+			
+			
+			.blank {
+				width: 1000px;
+				height: 75px;
+				margin: 0px auto;
+				margin-top: 12px;
+			}
+			
+			.content_1 {
+				width: 1000px;
+				height: 970px;
+				margin: 0px auto;
+			}
+			
+			.content_1_left {
+				width: 700px;
+				height: 970px;
+			}
+			
+			.content_1_right {
+				width: 280px;
+				height: 970px;
+			}
+			
+			.content_1_left,
+			.content_1_right {
+				float: left;
+			}
+			
+			.content_1_left_lt {
+				width: 350px;
+				height: 993px;
+				border-top: 1px #C8DCF2 solid;
+				margin-right: 10px;
+			}
+			
+			.content_1_left_lt_title {
+				width: 350px;
+				height: 34px;
+			}
+			
+			.content_1_left_lt_title_lt {
+				width: 158px;
+				height: 34px;
+				float: left;
+			}
+			
+			.content_1_left_lt_title_rt {
+				width: 101px;
+				height: 30px;
+				overflow: hidden;
+				float: right;
+			}
+			
+			.content_1_left_lt_importantNews {
+				width: 310px;
+				height: 200px;
+				overflow: hidden;
+			}
+			
+			.content_1_left_lt_shaanxiNews {
+				width: 310px;
+				height: 200px;
+				overflow: hidden;
+				display: none;
+			}
+			
+			.content_1_left_rt {
+				width: 330px;
+				height: 970px;
+				border-top: 1px #C8DCF2 solid;
+				margin-right: 10px;
+			}
+			
+			.content_1_left_rt div {
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			.content_1_left_rt_1 {
+				width: 330px;
+				height: 237px;
+			}
+			
+			.content_1_left_rt_2 {
+				width: 330px;
+				height: 71px;
+			}
+			
+			.content_1_left_rt_3 {
+				width: 330px;
+				height: 285px;
+			}
+			
+			.content_1_left_rt_4 {
+				border-top: 1px #C8DCF2 solid;
+				width: 330px;
+				height: 400px;
+			}
+			
+			.content_1_left_lt,
+			.content_1_left_rt {
+				float: left;
+			}
+			
+			.content_1 ul {
+				margin: 0px;
+				height: 0px;
+				line-height: 34px;
+			}
+			
+			.content_1 li {
+				padding: 0px 15px;
+				list-style: none;
+				float: left;
+			}
+			
+			.content_1_left_lt_title_lt_selected {
+				border-top: 3px #3297D8 solid;
+			}
+			
+			.content_1_left_lt_con {
+				width: 310px;
+				height: 200px;
+			}
+			
+			.daily_topic {
+				margin-left: 20px;
+			}
+			
+			.content_1_left_lt_con_2 {
+				width: 347px;
+				height: 737px;
+				/*overflow: hidden;*/
+			}
+			
+			.content_1_left_lt_importantNews2 {
+				width: 347px;
+				height: 737px;
+				overflow: hidden;
+			}
+			
+			.content_1_left_lt_shaanxiNews2 {
+				width: 347px;
+				height: 737px;
+				display: none;
+				overflow: hidden;
+			}
+			
+			.content_1_left_lt_title_rt_4_selected {
+				border-top: 3px #3297D8 solid;
+			}
+			
+			.content_1_left_rt_4_con {
+				width: 340px;
+				height: 340px;
+			}
+			
+			.today_video {
+				width: 340px;
+				height: 340px;
+				overflow: hidden;
+			}
+			
+			.movies {
+				width: 340px;
+				height: 340px;
+				display: none;
+				overflow: hidden;
+			}
+			
+			.art {
+				width: 340px;
+				height: 340px;
+				display: none;
+				overflow: hidden;
+			}
+			
+			.sse {}
+			
+			.hsi {
+				display: none;
+			}
+			
+			.djs {
+				display: none;
+			}
+			
+			.tencent {
+				display: none;
+			}
+			
+			.stock_title_selected,
+			.stock_title_selected a {
+				background: #3297D8;
+				color: white;
+				font-weight: 500px;
+			}
+			
+			.content_1_right_stock {
+				border: 1px #C8DCF2 solid;
+			}
+		</style>
+		<script src="js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+				$(".content_1_left_lt_title_lt li").mouseenter(function() {
+					$(this).addClass("content_1_left_lt_title_lt_selected").siblings().removeClass("content_1_left_lt_title_lt_selected");
+					var index = $(this).index();
+					$(".content_1_left_lt_con div").eq(index).show().siblings().hide();
+					$(".content_1_left_lt_con_2 div").eq(index).show().siblings().hide();
+				});
+			});
+		</script>
+
+		<script type="text/javascript">
+			$(function() {
+				$(".content_1_left_rt_4_title li").mouseenter(function() {
+					$(this).addClass("content_1_left_lt_title_rt_4_selected").siblings().removeClass("content_1_left_lt_title_rt_4_selected");
+					var index = $(this).index();
+					$(".content_1_left_rt_4_con div").eq(index).show().siblings().hide();
+				})
+			});
+		</script>
+
+		<script type="text/javascript">
+			$(function() {
+				$(".content_1_right_stock li").mouseenter(function() {
+					$(this).addClass("stock_title_selected").siblings().removeClass("stock_title_selected");
+					var index = $(this).index();
+					$(".stock_con div").eq(index).show().siblings().hide();
+				});
+			});
+		</script>
+		
+		<script type="text/javascript">
+			$(function(){
+				$(".navigation a").mouseenter(function(){
+					$(this).addClass("navigation_a_selected").siblings().removeClass("navigation_a_selected");
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<div class="soso">
+			<div class="logo"></div>
+			<div class="search">
+				<form id="searchbox" method="get" style="float: left;">
+					<div class="select_sort">
+						<!--<i>网页</i>
+						<i class="up_narrow">﹀</i>-->
+						<select name="sort" size="1" class="select_sort">
+							<option value="web">网页</option>
+							<option value="web">视频</option>
+							<option value="web">音乐</option>
+							<option value="web">地图</option>
+							<option value="web">问问</option>
+							<option value="web">百科</option>
+							<option value="web">新闻</option>
+							<option value="web">购物</option>
+
+						</select>
+					</div>
+					<input type="text" class="search_input" style="border:0px white solid;" />
+					<div class="sogoulogo">
+						<img src="img/sg_logo.png" style="width: 100%;height: 100%;" />
+					</div>
+				</form>
+				<div class="search_button">
+					<i>搜狗搜索</i>
+				</div>
+			</div>
+		</div>
+
+		<!--菜单栏-->
+		<div class="navigation">
+			<div>
+				<span class="navigation_line"><a href="#">新闻</a><a href="#">新闻</a><a href="#">新闻</a></span>
+				<span class="navigation_line"><a href="#">新闻</a><a href="#">新闻</a><a href="#">新闻</a></span>
+			</div>
+			<div>
+				<span class="navigation_line"><a href="#">新闻</a><a href="#">新闻</a><a href="#">新闻</a></span>
+				<span class="navigation_line"><a href="#">新闻</a><a href="#">新闻</a><a href="#">新闻</a></span>
+			</div>
+			<div>
+				<span class="navigation_line"><a href="#">新闻</a><a href="#">新闻</a><a href="#">新闻</a></span>
+				<span class="navigation_line"><a href="#">新闻</a><a href="#">新闻</a><a href="#">新闻</a></span>
+			</div>
+			<div>
+				<span class="navigation_line"><a href="#">新闻</a><a href="#">新闻</a><a href="#">新闻</a></span>
+				<span class="navigation_line"><a href="#">新闻</a><a href="#">新闻</a><a href="#">新闻</a></span>
+			</div>
+			<div>
+				<span class="navigation_line"><a href="#">新闻</a><a href="#">新闻</a><a href="#">新闻</a></span>
+				<span class="navigation_line"><a href="#">新闻</a><a href="#">新闻</a><a href="#">新闻</a></span>
+			</div>
+			<div>
+				<span class="navigation_line"><a href="#">新闻</a><a href="#">新闻</a><a href="#">新闻</a></span>
+				<span class="navigation_line"><a href="#">新闻</a><a href="#">新闻</a><a href="#">新闻</a></span>
+			</div>
+			<div id="navigation_last">
+				<span class="navigation_line"><a href="#">新闻</a><a href="#">新闻</a></span>
+				<span class="navigation_line"><a href="#">新闻</a><a href="#">新闻</a></span>
+			</div>
+		</div>
+
+		<!--空白-->
+		<div class="blank"></div>
+		<!--内容1-->
+		<div class="content_1">
+			<div class="content_1_left">
+				<div class="content_1_left_lt">
+					<div class="content_1_left_lt_title">
+						<div class="content_1_left_lt_title_lt">
+							<ul>
+								<li class="content_1_left_lt_title_lt_selected">
+									<a href="#">要闻</a>
+								</li>
+								<li>
+									<a href="#">陕西新闻</a>
+								</li>
+							</ul>
+						</div>
+						<div class="content_1_left_lt_title_rt">
+							<img src="img/weaher.png" />
+						</div>
+					</div>
+					<div class="content_1_left_lt_con">
+						<div class="content_1_left_lt_importantNews">
+							<img src="img/importantNews.png" />
+						</div>
+						<div class="content_1_left_lt_shaanxiNews">
+							<img src="img/sxNews.png" />
+						</div>
+					</div>
+					<div class="content_1_left_lt_con_2">
+						<div class="content_1_left_lt_importantNews2">
+							<img src="img/importantNews2.png" />
+						</div>
+						<div class="content_1_left_lt_shaanxiNews2">
+							<img src="img/shaanxiNews2.png" />
+						</div>
+					</div>
+				</div>
+				<div class="content_1_left_rt">
+					<div class="content_1_left_rt_1">
+						<span class="daily_topic">今日话题</span>
+						<img src="img/daily_topic.png" />
+					</div>
+					<div class="content_1_left_rt_2">
+						<img src="img/come_on_China.png" />
+					</div>
+					<div class="content_1_left_rt_3">
+						<img src="img/OlympicsMoment.png" />
+					</div>
+
+					<div class="content_1_left_rt_4">
+						<div class="content_1_left_rt_4_title">
+							<ul>
+								<li class="content_1_left_lt_title_rt_4_selected">
+									<a href="#">今日热播</a>
+								</li>
+								<li>
+									<a href="#">影视剧</a>
+								</li>
+								<li>
+									<a href="#">综艺</a>
+								</li>
+							</ul>
+						</div>
+						<div class="content_1_left_rt_4_con">
+							<div class="today_video">
+								<img src="img/today_video.png" />
+							</div>
+							<div class="movies">
+								<img src="img/movies.png" />
+							</div>
+							<div class="art">
+								<img src="img/art.png" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="content_1_right">
+				<div class="content_1_right_entrance">
+					<img src="img/quick_entrance.png" />
+				</div>
+				<div class="content_1_right_stock">
+					<img src="img/stock_title.png" />
+					<div class="stock_title">
+						<ul>
+							<li class="stock_title_selected">
+								<a href="#">上证</a>
+							</li>
+							<li>
+								<a href="#">恒指</a>
+							</li>
+							<li>
+								<a href="#">道指</a>
+							</li>
+							<li>
+								<a href="#">腾安</a>
+							</li>
+						</ul>
+					</div>
+					<div class="stock_con">
+						<div class="sse">
+							<img src="img/sse.png" />
+						</div>
+						<div class="hsi">
+							<img src="img/hsi.png" />
+						</div>
+						<div class="djs">
+							<img src="img/djs.png" />
+						</div>
+						<div class="tencent">
+							<img src="img/tencent.png" />
+						</div>
+					</div>
+				</div>
+				<div class="content_1_right_horoscope">
+					<img src="img/horoscope.png" />
+				</div>
+			</div>
+		</div>
+
+	</body>
+
+</html>

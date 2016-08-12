@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	
+	<body>
+		<div id="text_in" style="width: 200px;height: 20px;">
+			<input type="password" id="in" value="请输入..." style="width: 200px;height: 20px" />
+		</div>
+		<div id="text_out" style="width: 200px;height: 20px;margin-top: 10px;border: 1px solid black;">
+		</div>
+		<input type="button" id="in" value="转换" style="width: 200px;height: 20px" onclick="convert()" />
+		<script type="text/javascript">
+			function convert() {
+				var in_t = document.getElementById("in");
+				var out_t = document.getElementById("text_out");
+				var in_a = (in_t.value).split("");
+
+				//				var con_a = in_a.reverse();
+
+				in_t.value = "";
+				//				for(var i = 0; i < con_a.length; i++) {
+				//					out_t.innerHTML += con_a[i];
+				//				}
+				alert(in_a.join(""));
+				var i = in_a.length - 1;
+				for(i = in_a.length - 1; i >= 0; i--) {
+					out_t.innerHTML += in_a[i];
+				}
+
+				for(i = in_a.length - 1; i >= 0; i--) {
+					in_t.value += in_a[i];
+				}
+			}
+		</script>
+	</body>
+
+</html>

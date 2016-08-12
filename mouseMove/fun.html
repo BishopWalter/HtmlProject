@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#boundary {
+				height: 210px;
+				background: black;
+			}
+			
+			#boundary_2 {
+				height: 210px;
+				background: black;
+				margin-top: 20px;
+			}
+			
+			#_block {
+				width: 10px;
+				height: 10px;
+				background: white;
+			}
+			
+			#_block_2 {
+				width: 10px;
+				height: 10px;
+				background: yellow;
+				margin-top: 20px;
+			}
+			
+			#_block_3 {
+				width: 10px;
+				height: 10px;
+				background: yellow;
+				margin-top: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="boundary">
+			<div id="_block"></div>
+			<div id="_block_2"></div>
+		</div>
+<!--		
+		<div id="boundary_2">
+			<div id="_block_3"></div>
+		</div>-->
+		<div id="btn">
+			<input type="button" id="start" value="Start" onclick="start()" />
+			<input type="button" id="stop" value="Stop" onclick="stop()" />
+		</div>
+		<script type="text/javascript">
+			//定义全局变量
+			var x = 0,
+				y = 0; //坐标
+			var timer_id = null; //计时器id
+			var directionToRight = true; //定义方向
+			var radius = 0; //定义半径
+			var counts = 0;
+			//找控件
+			var boundary = document.getElementById("boundary");
+			var _block = document.getElementById("_block");
+			var _block_2 = document.getElementById("_block_2");
+
+			//初始化边框
+			function init_boundary() {
+				boundary.style.width = window.offsetWidth;
+			}
+			init_boundary();
+
+			//自动换向
+			function changeDirection() {
+				counts++;
+				if(x >= boundary.offsetWidth) {
+					directionToRight = false;
+				} else if(x <= 0) {
+					directionToRight = true;
+				}
+
+			}
+
+			//获取动态坐标
+			//正弦坐标
+			function sin_coordinate() {
+
+				if(directionToRight) {
+					x += 2;
+					var sita = Math.PI * 0.005 * x;
+					y = Math.sin(sita) * 100 + 100;
+				} else {
+					x -= 2;
+					var sita = Math.PI * 0.005 * x;
+					y = Math.sin(sita) * 100 + 100;
+				}
+
+				changeDirection();
+			}
+
+			//测试坐标
+			function test_coordinate() {
+				radius++;
+				if(directionToRight) {
+					x += 2;
+					y = Math.round(Math.abs(Math.sqrt(Math.pow(radius, 2) - Math.pow(x, 2))));
+				} else {
+					x += 2;
+					y = Math.round(Math.abs(Math.sqrt(Math.pow(radius, 2) - Math.pow(x, 2))));
+				}
+
+				changeDirection();
+			}
+
+			//添加一个运动div元素
+			function add_block() {
+				var _block_x = document.createElement("div");
+				_block_x.style.backgroundColor = red;
+				_block_x.offsetWidth = _block.offsetWidth + "px";
+				_block_x.offsetHeight = _block.offsetHeight + "px";
+				_block_x.marginTop = (_block.marginTop + 20) + "px";
+				_block_x.marginLeft = (_block.marginLeft + 20) + "px";
+				boundary.appendChild(_block_x);
+			}
+
+			//运动
+			function moving() {
+				sin_coordinate();
+				_block.style.marginTop = y + "px";
+				_block.style.marginLeft = x + "px";
+
+//				_block_2.style.marginTop =y + "px";
+//				_block_2.style.marginLeft = x + "px";
+			}
+
+			//开始运动
+			function start() {
+				timer_id = window.setInterval(moving, 1);
+			}
+
+			//停止运动
+			function stop() {
+				if(timer_id != null) {
+					window.clearInterval(timer_id);
+				}
+			}
+		</script>
+	</body>
+
+</html>

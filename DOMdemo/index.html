@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>dom</title>
+		<style type="text/css">
+			#show {
+				width: 400px;
+				height: 400px;
+				border: 1px solid black;
+			}
+			
+			span {}
+		</style>
+	</head>
+
+	<body>
+		<div id="show">
+
+		</div>
+		<input type="button" id="sw" value="添加" onclick="start()" />
+		<input type="button" id="st" value="停止" onclick="getRandomColor()" />
+		<input type="button" id="cl" value="清除" onclick="clearCon()"/>
+		<script type="text/javascript">
+			var i = 0;
+			var tag = null;
+
+
+			function getRandomColor(){
+				var regular = /(\d|[A-F]){6}/
+				
+				
+				
+				var r_ = parseInt((Math.random())*256,16);
+				var g_ = parseInt((Math.random())*256,16);
+				var b_ = parseInt((Math.random())*256,16);
+				var r_g_b = "#"+r_+""+g_+""+b_;
+				alert(r_g_b);
+			}
+			getRandomColor();
+			function addCon() {
+				i++;
+				var tetElement = document.createElement("span");
+				tetElement.innerHTML = "小伙子+" + i;
+				document.getElementById("show").appendChild(tetElement);
+			}
+
+			function start() {
+				tag = window.setInterval(addCon, 100);
+			}
+
+			function stop() {
+				if(!(tag == null)) {
+					window.clearInterval(tag);
+				}
+			}
+			
+			function clearCon(){
+				var spans = document.getElementsByTagName("span");
+				for (var i = 0; i < spans.length; i++) {
+					spans[i].innerHTML="";
+				}
+			}
+		</script>
+	</body>
+
+</html>

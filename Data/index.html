@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>时间与正则</title>
+		<style type="text/css">
+			body {
+				margin: 0px;
+				margin: 0px;
+				background: url(img/background.jpg);
+			}
+			
+			#top {
+				margin-top: 40px;
+				width: 100%;
+				height: 60px;
+			}
+			
+			#worldTime {
+				width: 528px;
+				height: 100%;
+				margin: auto;
+			}
+			
+			#bj,
+			#ny,
+			#ld,
+			#gtm {
+				float: left;
+				width: 100px;
+				height: 60px;
+				line-height: 30px;
+				text-align: center;
+				margin-left: 30px;
+				border: 1px white solid;
+				color: yellow;
+				/*box-shadow: gray;*/
+			}
+			
+			#regularExpression {
+				margin-top: 40px;
+				width: 100%;
+				height: 310px;
+				clear: left;
+				color: white;
+			}
+			
+			#info {
+				width: 100%;
+				height: 40px;
+			}
+			
+			#user,
+			#pwd,
+			#pwdc,
+			#eml,
+			#idn,
+			#pn,
+			#qq {
+				width: 400px;
+				height: 100%;
+				margin: auto;
+			}
+			
+			#btn_body {
+				width: 100%;
+				height: 40px;
+			}
+			
+			#btn {
+				width: 150px;
+				height: 100%;
+				margin: auto;
+			}
+			
+			#submit,
+			#reset {
+				margin: 10px 12px;
+			}
+			
+			#u,
+			#p,
+			#pc,
+			#e,
+			#i,
+			#ph,
+			#q {
+				width: 73px;
+				float: left;
+				text-align: center;
+			}
+			
+			#userName,#passWord,#passWordConfirm,#email,#idNumber,#phoneNumber,#QQnumber{
+				background: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="top">
+			<div id="worldTime">
+				<div id="bj">
+					<div id="beijing"></div>
+					<div>北京时间</div>
+				</div>
+
+				<div id="ny">
+					<div id="newyork"></div>
+					<div>纽约时间</div>
+				</div>
+
+				<div id="ld">
+					<div id="london"></div>
+					<div>伦敦时间</div>
+				</div>
+
+				<div id="gtm">
+					<div id="standard"></div>
+					<div>标准时间</div>
+				</div>
+			</div>
+		</div>
+		<div id="regularExpression">
+			<div id="info">
+				<div id="user">
+					<div id="u">
+						用户名
+					</div>
+					<input type="text" id="userName" value="" />
+				</div>
+				<div id="pwd">
+					<div id="p">
+						密码
+					</div>
+					<input type="text" id="passWord" value="" />
+				</div>
+				<div id="pwdc">
+					<div id="pc">
+						确认密码
+					</div>
+					<input type="text" id="passWordConfirm" value="" />
+				</div>
+				<div id="eml">
+					<div id="e">
+						邮箱
+					</div>
+					<input type="text" id="email" value="" />
+				</div>
+				<div id="idn">
+					<div id="i">
+						身份证
+					</div>
+					<input type="text" id="idNumber" value="" />
+				</div>
+				<div id="pn">
+					<div id="ph">
+						手机
+					</div>
+					<input type="text" id="phoneNumber" value="" />
+				</div>
+				<div id="qq">
+					<div id="q">
+						QQ
+					</div>
+					<input type="text" id="QQnumber" value="" />
+				</div>
+
+			</div>
+
+		</div>
+		<div id="btn_body">
+			<div id="btn">
+				<input type="submit" id="submit" value="提交" onclick="check()" />
+				<input type="reset" id="reset" value="重置" onclick="clear()" />
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			//当前时间
+			function CurrentTime() {
+				var beijing = document.getElementById("beijing");
+				var standard = document.getElementById("standard");
+				var newyork = document.getElementById("newyork");
+				var london = document.getElementById("london");
+
+				standard.innerHTML = ((new Date()).getUTCHours() + 0) + ":" + (new Date()).getUTCMinutes() + ":" + (new Date()).getUTCSeconds();
+				beijing.innerHTML = ((((new Date()).getUTCHours() + 8)>24)?((new Date()).getUTCHours() + 8-24):((new Date()).getUTCHours() + 8)) + ":" + (new Date()).getUTCMinutes() + ":" + (new Date()).getUTCSeconds();
+				newyork.innerHTML = ((((new Date()).getUTCHours() -5)<0)?((new Date()).getUTCHours() - 5+24):((new Date()).getUTCHours() - 5)) + ":" + (new Date()).getUTCMinutes() + ":" + (new Date()).getUTCSeconds();
+				london.innerHTML = ((new Date()).getUTCHours() + 1) + ":" + (new Date()).getUTCMinutes() + ":" + (new Date()).getUTCSeconds();
+			}
+
+			CurrentTime();
+
+			function showTime() {
+				window.setInterval(CurrentTime, 1000);
+			}
+			showTime();
+
+			//			function getId() {
+			//找id
+			var usernameText = document.getElementById("userName");
+			var passwordText = document.getElementById("passWord");
+			var passwordconfirmText = document.getElementById("passWordConfirm");
+			var emailText = document.getElementById("email");
+			var idnumberText = document.getElementById("idNumber");
+			var phonenumberText = document.getElementById("phoneNumber");
+			var qqnumberText = document.getElementById("QQnumber");
+			//			}
+			//正则判断
+			function check() {
+
+				//判断条件
+				var user_rule = /\w{6,20}/;
+				var pwd_rule = /[A-Z].{8,}/;
+				//				var pwdc_rule = /passwordText.value/;
+				var eml_rule = /\w{6,}@([a-z]\d){1,3}(\.)[a-z]{1,3}/;
+				var idn_rule = /[1-9]\d{16}(\d|x)/;
+				var ph_rule = /1\d{10}/;
+				var qq_rule = /\d{6,11}/;
+
+				//判断
+				var user_result = user_rule.test(usernameText.value);
+				var pwd_result = pwd_rule.test(passwordText.value);
+				var pwdc_result = (passwordText.value == passwordconfirmText.value) ? true : false;
+				var eml_result = eml_rule.test(emailText.value);
+				var idn_result = idn_rule.test(idnumberText.value);
+				var ph_result = ph_rule.test(phonenumberText.value);
+				var qq_result = qq_rule.test(qqnumberText.value);
+				alert(passwordconfirmText + "" + passwordText);
+				if(!user_result) {
+					alert("用户名不合法，用户名需使用大写小写字母数字下划线，请重新输入");
+					return;
+				}
+				if(!pwd_result) {
+					alert("用户密码不合法，用户密码首位为大写字母，至少8位，请重新输入");
+					return;
+				}
+				if(!pwdc_result) {
+					alert("两次输入密码不一致，请重新输入");
+					return;
+				}
+				if(!eml_result) {
+					alert("用户邮箱不合法，请重新输入");
+					return;
+				}
+				if(!idn_result) {
+					alert("用户身份证号码不合法，请重新输入");
+					return;
+				}
+				if(!ph_result) {
+					alert("用户手机号不合法，请重新输入");
+					return;
+				}
+				if(!qq_result) {
+					alert("用户QQ号码不合法，请重新输入");
+					return;
+				}
+			}
+
+			function clear() {
+				//找id
+				var usernameText = document.getElementById("userName");
+				var passwordText = document.getElementById("passWord");
+				var passwordconfirmText = document.getElementById("passWordConfirm");
+				var emailText = document.getElementById("email");
+				var idnumberText = document.getElementById("idNumber");
+				var phonenumberText = document.getElementById("phoneNumber");
+				var qqnumberText = document.getElementById("QQnumber");
+				alert("为什么？")
+				usernameText.value = "";
+				passwordText.value = "";
+				passwordconfirmText.value = "";
+				emailText.value = "";
+				idnumberText.value = "";
+				phonenumberText.value = "";
+				qqnumberText.value = "";
+			}
+		</script>
+
+	</body>
+
+</html>

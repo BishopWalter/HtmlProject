@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+		
+			body{
+				margin: 0px;
+			}
+			#greenbox {
+				width: 100px;
+				height: 100px;
+				background: green;
+				position: absolute;
+			}
+			
+			#boundary {
+				width: 800px;
+				height: 500px;
+				padding: 0px;
+				border: 1px solid black;
+				float: left;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="boundary">
+			<div id="greenbox"></div>
+		</div>
+
+		<script type="text/javascript">
+			var x = 0;
+			var y = 0;
+			//找控件
+			var greenbox = document.getElementById("greenbox");
+			var boundary = document.getElementById("boundary");
+			var movement = document.getElementById("movement");
+			var redbox = document.getElementById("redbox");
+			var pressed_ = false;
+
+			//鼠标拖动
+			greenbox.onmousedown = function() {
+				pressed_ = true;
+			}
+
+			greenbox.onmouseup = function() {
+				pressed_ = false;
+			}
+
+			boundary.onmousemove = function(ev) {
+				
+				
+				
+				if(pressed_) {
+					greenbox.innerHTML = ev.x + "," + ev.y+"<br/>"+boundary.offsetWidth+","+boundary.offsetHeight;
+					greenbox.style.left = ev.clientX + "px";
+					greenbox.style.top = ev.clientY + "px";
+				}
+			}
+		</script>
+
+	</body>
+
+</html>

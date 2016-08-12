@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>定时器</title>
+		<style type="text/css">
+			#hour,
+			#minute,
+			#second {
+				width: 50px;
+				height: 80px;
+				line-height: 80px;
+				text-align: center;
+				background: blue;
+				font-size: 45px;
+				color: yellow;
+				font-weight: 500px;
+				float: left;
+				margin: 20px 1px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			var hours = 0;
+			var minutes = 0;
+			var seconds = 0;
+
+			//			var hour = document.getElementById("hour");
+			//			var minute = document.getElementById("minute");
+			//			var second = document.getElementById("second");
+
+			function showTime() {
+				document.getElementById("hour").innerHTML = hours;
+				document.getElementById("minute").innerHTML = minutes;
+				document.getElementById("second").innerHTML = hours;
+			}
+
+			function start() {
+				seconds++;
+				showTime();
+				if(seconds > 59) {
+					seconds = 0;
+					minutes++;
+					showTime();
+					if(minutes > 59) {
+						minutes = 0;
+						hours++;
+						showTime();
+						if(hours > 23) {
+							hours = 0;
+							showTime();
+						}
+					}
+				}
+			}
+
+			function timer() {
+				window.setInterval(start, 1)
+			}
+		</script>
+
+		<div id="clock">
+			<div id="hour">
+			</div>
+			<div id="minute">
+			</div>
+			<div id="second">
+			</div>
+		</div>
+		<input type="button" id="" value="开始" onclick="timer()" />
+	</body>
+
+</html>

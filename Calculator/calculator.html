@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			.calFrame {
+				width: 100%;
+				height: 520px;
+			}
+			
+			.cal {
+				width: 300px;
+				height: 100%;
+				margin: 0px auto;
+				background: lightgoldenrodyellow;
+				border: 2px solid lightgray;
+			}
+			
+			.tv {
+				width: 280px;
+				height: 80px;
+				background: lightblue;
+				border: 1px solid lightgoldenrodyellow;
+				margin: 10px auto;
+			}
+			
+			.btnFrame {
+				width: 280px;
+				height: 400px;
+				background: lightsalmon;
+				margin: 10px auto;
+			}
+			
+			.btn_style {
+				width: 44px;
+				height: 44px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="calFrame">
+			<div class="cal">
+				<div class="tv">
+				</div>
+				<div class="btnFrame">
+					<input type="button" id="one" value="1" onclick="initNumber()"/>
+					<input type="button" id="two" value="2" onclick="initNumber()"/>
+					<input type="button" id="three" value="3" onclick="initNumber()"/>
+					<input type="button" id="four" value="4" onclick="initNumber()"/>
+					<input type="button" id="five" value="5" onclick="initNumber()"/>
+					<input type="button" id="five" value="5" onclick="initNumber()"/>
+					<input type="button" id="six" value="6" onclick="initNumber()"/>
+					<input type="button" id="seven" value="7" onclick="initNumber()"/>
+					<input type="button" id="eight" value="8" onclick="initNumber()"/>
+					<input type="button" id="nine" value="9" onclick="initNumber()"/>
+					<input type="button" id="zero" value="0" onclick="initNumber()"/>
+					<input type="button" id="add" value="+" onclick="initNumber()"/>
+					<input type="button" id="sub" value="-" onclick="initNumber()"/>
+					<input type="button" id="times" value="x" onclick="initNumber()"/>
+					<input type="button" id="divide" value="÷" onclick="initNumber()"/>
+					<input type="button" id="clear" value="CE" onclick="initNumber()"/>
+					<input type="button" id="dot" value="·" onclick="initNumber()"/>
+					<input type="button" id="equal" value="=" onclick="initNumber()"/>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+		var num_1 = null;
+		var num_2 = null;
+		var symbol = null;
+			function getElement() {
+				var tv = document.getElementsByClassName("tv");
+				var one = document.getElementById("one");
+				var two = document.getElementById("two");
+				var three = document.getElementById("three");
+				var four = document.getElementById("four");
+				var five = document.getElementById("five");
+				var six = document.getElementById("six");
+				var seven = document.getElementById("seven");
+				var eight = document.getElementById("eight");
+				var nine = document.getElementById("nine");
+				var zero = document.getElementById("zero");
+				var add = document.getElementById("add");
+				var sub = document.getElementById("sub");
+				var times = document.getElementById("times");
+				var divide = document.getElementById("divide");
+				var clear = document.getElementById("clear");
+				var dot = document.getElementById("dot");
+				var equal = document.getElementById("equal")
+			}
+			
+			function add(number_1, number_2) {
+				return number_1 + number_2;
+			}
+
+			function sub(number_1, number_2) {
+				return number_1 - number_2;
+			}
+
+			function times(number_1, number_2) {
+				return number_1 * number_2;
+			}
+
+			function divide(number_1, number_2) {
+				return number_1 / number_2;
+			}
+			
+			function equal(){
+			}
+			
+			
+		</script>
+
+	</body>
+
+</html>

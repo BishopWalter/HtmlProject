@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<style type="text/css">
+		body {
+			margin: 0px;
+			padding: 0px;
+		}
+		
+		table {
+			width: 100%;
+			height: 30px;
+			text-align: center;
+		}
+		
+		button {
+			display: block;
+			margin: 30px auto;
+		}
+		
+		#a_con {
+			margin-left: 20px;
+		}
+		
+		#con,
+		#a_con {
+			float: left;
+		}
+		
+		.top {
+			width: 100%;
+			height: 80px;
+			margin: 0px;
+		}
+		
+		.header {
+			width: 1250px;
+			height: 100px;
+			background: lightskyblue;
+			margin: auto;
+			text-align: center;
+		}
+		
+		.title {
+			font-size: 40px;
+			color: #666;
+			line-height: 100px;
+		}
+		
+		.separator_line {
+			width: 1260px;
+			height: 1px;
+			background: black;
+			margin: 24px auto 5px auto;
+		}
+		
+		.scrolling_text {
+			width: 1250px;
+			height: 20px;
+			margin: 0 auto;
+		}
+		
+		.main {
+			width: 1250px;
+			height: 100%;
+			margin: auto;
+			padding: 0px;
+			background: lightgoldenrodyellow;
+		}
+		
+		.nav {
+			width: 250px;
+			height: 100%;
+			margin: 0px 10px;
+		}
+		
+		.main_left {
+			width: 540px;
+			height: 100%;
+			margin: 0px 10px;
+		}
+		
+		.main_right {
+			width: 400px;
+			height: 100%;
+			margin: 0px 10px;
+		}
+		
+		.nav,
+		.main_left,
+		.main_right {
+			float: left;
+		}
+		
+		.table_cpp,
+		.table_js,
+		.table_total {
+			display: none;
+		}
+	</style>
+
+	<body>
+
+		<div class="top">
+			<div class="header">
+				<span class="title">学生成绩管理系统</span>
+			</div>
+		</div>
+
+		<div class="separator_line"></div>
+
+		<div class="scrolling_text">
+			<marquee scrollamount="5">博文明理，厚德尚能</marquee>
+		</div>
+		<div class="main">
+			<div class="nav">
+				<button type="button" onclick="sortByJava()">根据java排序</button>
+				<button type="button" onclick="sortByCpp()">根据cpp排序</button>
+				<button type="button" onclick="sortByJs()">根据js排序</button>
+				<button type="button" onclick="sortByTotal()">根据总分排序</button>
+			</div>
+			<div class="main_left">
+				<div class="table_java">
+					<table id="a_score" border="1px" cellspacing="0px" cellpadding="1px">
+						<caption>信息管理专业1班学生成绩表(Java科目排序)</caption>
+						<tr>
+							<td>序号</td>
+							<td>姓名</td>
+							<td>Java</td>
+							<td>Cpp</td>
+							<td>Js</td>
+							<td>平均分</td>
+							<td>总分</td>
+							<td>名次</td>
+						</tr>
+					</table>
+				</div>
+				<!--<div class="table_cpp">
+					<table id="a_score_cpp" border="1px" cellspacing="0px" cellpadding="1px">
+						<caption>信息管理专业1班学生成绩(Cpp科目排序)</caption>
+						<tr>
+							<td>序号</td>
+							<td>姓名</td>
+							<td>Java</td>
+							<td>Cpp</td>
+							<td>Js</td>
+							<td>平均分</td>
+							<td>总分</td>
+							<td>名次</td>
+						</tr>
+					</table>
+				</div>-->
+				<!--<div class="table_js">
+					<table id="a_score_js" border="1px" cellspacing="0px" cellpadding="1px">
+						<caption>信息管理专业1班学生成绩(Js科目排序)</caption>
+						<tr>
+							<td>序号</td>
+							<td>姓名</td>
+							<td>Java</td>
+							<td>Cpp</td>
+							<td>Js</td>
+							<td>平均分</td>
+							<td>总分</td>
+							<td>名次</td>
+						</tr>
+					</table>
+				</div>-->
+				<!--<div class="table_total">
+					<table id="a_score_total" border="1px" cellspacing="0px" cellpadding="1px">
+						<caption>信息管理专业1班学生成绩(总分排序)</caption>
+						<tr>
+							<td>序号</td>
+							<td>姓名</td>
+							<td>Java</td>
+							<td>Cpp</td>
+							<td>Js</td>
+							<td>平均分</td>
+							<td>总分</td>
+							<td>名次</td>
+						</tr>
+					</table>
+				</div>
+			</div>-->
+			</div>
+			<div class="main_right">
+				<table id="score" border="1px" cellspacing="0px" cellpadding="1px">
+					<caption>2011级计算机学院信息管理专业1班学生原始成绩汇总</caption>
+					<tr>
+						<td>序号</td>
+						<td>姓名</td>
+						<td>Java</td>
+						<td>Cpp</td>
+						<td>Js</td>
+						<td>平均分</td>
+						<td>总分</td>
+						<td>名次</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			//		学生信息
+			var student_name = new Array("蔡世杰", "李康宁", "张承龙", "李林奕", "潘嘉成", "庞诣", "戴冕之", "周子康", "杨傲", "刘皓轩", "周佳豪", "旷建国", "易鑫", "肖楷洋", "刘纬豪", "周思宇", "管湘彬", "林宸宇", "郭展晨", "刘贝");
+			var java_score = new Array(getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100));
+			var cpp_score = new Array(getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100));
+			var js_score = new Array(getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100), getRandomScore(0, 100));
+			//			var student = new Object();
+			var studentInfo = new Array();
+
+			function getStudentInfo() {
+				for(var i = 0; i < 20; i++) {
+					studentInfo[i] = student_name[i] + "," + java_score[i] + "," + cpp_score[i] + "," + js_score[i];
+				}
+			}
+			//			获取随机分数
+			function getRandomScore(Min, Max) {
+				var Range = Max - Min;
+				var Temp = Math.random();
+				var Score = Math.round(Temp * Range);
+				return Score;
+			}
+			//			初始化成绩表单
+			function initData(studentInfo) {
+				for(var i = 0; i < 20; i++) {
+					document.getElementById("score").innerHTML += '<table><tr>' +
+						'<td>' + (i + 1) + '</td>' +
+						'<td>' + student_name[i] + '</td>' +
+						'<td>' + java_score[i] + '</td>' +
+						'<td>' + cpp_score[i] + '</td>' +
+						'<td>' + js_score[i] + '</td>' +
+						'<td>' + Math.round((java_score[i] + cpp_score[i] + js_score[i]) / 3) + '</td>' +
+						'<td>' + (java_score[i] + cpp_score[i] + js_score[i]) + '</td>' +
+						'<td>' + "/" + '</td>' +
+						'</tr></table>';
+				}
+			}
+
+			initData();
+			getStudentInfo();
+
+			function sortAndShow(a, id) {
+				if(a == undefined) {
+					//				冒泡排序
+					for(var i = 0; i < studentInfo.length - 1; i++) {
+						for(var j = 0; j < studentInfo.length - i - 1; j++) {
+							if(parseInt((studentInfo[j].split(","))[1]) + parseInt((studentInfo[j].split(","))[2]) + parseInt((studentInfo[j].split(","))[3]) > parseInt((studentInfo[j + 1].split(","))[1]) + parseInt((studentInfo[j + 1].split(","))[2]) + parseInt((studentInfo[j + 1].split(","))[3])) {
+								var temp = studentInfo[j];
+								studentInfo[j] = studentInfo[j + 1];
+								studentInfo[j + 1] = temp;
+							}
+						}
+					}
+
+					//				循环显示
+					for(var i = 0; i < studentInfo.length; i++) {
+
+						document.getElementById("a_score").innerHTML += '<table><tr>' +
+							'<td>' + (i + 1) + '</td>' +
+							'<td>' + (studentInfo[i].split(","))[0] + '</td>' +
+							'<td>' + (studentInfo[i].split(","))[1] + '</td>' +
+							'<td>' + (studentInfo[i].split(","))[2] + '</td>' +
+							'<td>' + (studentInfo[i].split(","))[3] + '</td>' +
+							'<td>' + Math.round((parseInt((studentInfo[i].split(","))[1]) + parseInt((studentInfo[i].split(","))[2]) + parseInt((studentInfo[i].split(","))[3])) / 3) + '</td>' +
+							'<td>' + (parseInt((studentInfo[i].split(","))[1]) + parseInt((studentInfo[i].split(","))[2]) + parseInt((studentInfo[i].split(","))[3])) + '</td>' +
+							'<td>' + (20 - i) + '</td>' +
+							'</tr></table>';
+					}
+
+				} else {
+					//				冒泡排序
+					for(var i = 0; i < studentInfo.length - 1; i++) {
+						for(var j = 0; j < studentInfo.length - i - 1; j++) {
+							if(parseInt((studentInfo[j].split(","))[a]) > parseInt((studentInfo[j + 1].split(","))[a])) {
+								var temp = studentInfo[j];
+								studentInfo[j] = studentInfo[j + 1];
+								studentInfo[j + 1] = temp;
+							}
+						}
+					}
+					//				循环显示
+					for(var i = 0; i < studentInfo.length; i++) {
+						document.getElementById("a_score").innerHTML += '<table><tr>' +
+							'<td>' + (i + 1) + '</td>' +
+							'<td>' + (studentInfo[i].split(","))[0] + '</td>' +
+							'<td>' + (studentInfo[i].split(","))[1] + '</td>' +
+							'<td>' + (studentInfo[i].split(","))[2] + '</td>' +
+							'<td>' + (studentInfo[i].split(","))[3] + '</td>' +
+							'<td>' + Math.round((parseInt((studentInfo[i].split(","))[1]) + parseInt((studentInfo[i].split(","))[2]) + parseInt((studentInfo[i].split(","))[3])) / 3) + '</td>' +
+							'<td>' + (parseInt((studentInfo[i].split(","))[1]) + parseInt((studentInfo[i].split(","))[2]) + parseInt((studentInfo[i].split(","))[3])) + '</td>' +
+							'<td>' + "/" + '</td>' +
+							'</tr></table>';
+					}
+				}
+
+			}
+
+			//			根据java排序
+			function sortByJava(java_score) {
+				document.getElementsByClassName("table_java").innerHTML = "";
+				sortAndShow(1);
+			}
+
+			function sortByCpp() {
+				document.getElementsByClassName("table_java").innerHTML = "";
+				sortAndShow(2);
+			}
+
+			function sortByJs() {
+				document.getElementsByClassName("table_js").innerHTML = "";
+				sortAndShow(3);
+			}
+
+			function sortByTotal() {
+				document.getElementsByClassName("table_total").innerHTML = "";
+				sortAndShow();
+			}
+		</script>
+	</body>
+
+</html>
